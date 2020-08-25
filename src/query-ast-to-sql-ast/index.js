@@ -868,6 +868,9 @@ function spreadFragments(selections, fragments, typeName) {
 
 export function handleOrderBy(orderBy) {
   if (!orderBy) return undefined
+  if (typeof orderBy === 'string') {
+    return orderBy
+  }
   const orderColumns = {}
   if (typeof orderBy === 'object') {
     for (let column in orderBy) {

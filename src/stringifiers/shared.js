@@ -117,6 +117,9 @@ FROM (
 
 export function orderColumnsToString(orderColumns, q, as) {
   const conditions = []
+  if (typeof orderColumns === 'string') {
+    return orderColumns
+  }
   for (let column in orderColumns) {
     conditions.push(
       `${as ? q(as) + '.' : ''}${q(column)} ${orderColumns[column]}`
